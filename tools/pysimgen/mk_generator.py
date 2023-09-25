@@ -139,7 +139,7 @@ class MK_Generator:
 
 				self.sc_sim_rule += var_lib
 
-			self.sc_sim_rule += ' $(VOBJ_DIR)/verilated.o'
+			self.sc_sim_rule += ' $(VOBJ_DIR)/verilated.o $(VOBJ_DIR)/verilated_threads.o'
 
 		if len(sc_gen.c_files) > 0:
 			self.sc_sim_rule += ' $(OBJS)'

@@ -145,7 +145,7 @@ class VerilogComponent:
 		rule += fmt.format(self.comp_typename)
 
 		fmt  = '\t$(MAKE) -C $(VOBJ_DIR) -f {0}.mk '
-		fmt += 'OPT="$(CXXFLAGS)" verilated.o\n\n'
+		fmt += 'OPT="$(CXXFLAGS)" verilated.o verilated_thread.o\n\n'
 		rule += fmt.format(self.comp_typename)
 
 		self.var_files_v = var_files_v
@@ -161,6 +161,8 @@ class VerilogComponent:
 		fmt += 'OPT="$(CXXFLAGS)" verilated.o\n\n'
 
 		rule = '$(VOBJ_DIR)/verilated.o: $({0}_LIB)\n'.format(var_name)
+		rule += fmt.format(self.comp_typename)
+		rule = '$(VOBJ_DIR)/verilated_thread.o: $({0}_LIB)\n'.format(var_name)
 		rule += fmt.format(self.comp_typename)
 
 		self.verilator_o_rule = rule
