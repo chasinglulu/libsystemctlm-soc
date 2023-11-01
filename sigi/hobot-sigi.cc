@@ -78,6 +78,11 @@ hobot_sigi::hobot_sigi(sc_module_name name, const char *sk_descr,
 		proxy_out[i].bind(*out[i]);
 	}
 
+	s_axi_mmp[0] = &rp_axi_mmp0.sk;
+	s_axi_mmp[1] = &rp_axi_mmp1.sk;
+	s_axi_mmp[2] = &rp_axi_mmp2.sk;
+	s_axi_reserved = &rp_axi_reserved.sk;
+
 	for (i = 0; i < h2d_irq.size(); i++) {
 		rp_wires_in.wires_in[i](h2d_irq[i]);
 	}
