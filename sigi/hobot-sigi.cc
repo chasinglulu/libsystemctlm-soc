@@ -46,8 +46,8 @@ hobot_sigi::hobot_sigi(sc_module_name name, const char *sk_descr,
 	  rp_user_slave("rp_net_slave", 10),
 	  proxy_in("proxy_in", 2),
 	  proxy_out("proxy_out", proxy_in.size()),
-	  h2d_irq("h2d_irq", rp_wires_in.wires_in.size()),
-	  d2h_irq("d2h_irq", rp_irq_out.wires_out.size()),
+	  h2d_irq("h2d_irq", rp_wires_out.wires_out.size()),
+	  d2h_irq("d2h_irq", rp_wires_in.wires_in.size()),
 	  resetn("resetn", 4)
 {
 	tlm_utils::simple_target_socket<remoteport_tlm_memory_slave> * const out[] = {
@@ -83,12 +83,12 @@ hobot_sigi::hobot_sigi(sc_module_name name, const char *sk_descr,
 	s_axi_mmp[2] = &rp_axi_mmp2.sk;
 	s_axi_reserved = &rp_axi_reserved.sk;
 
-	for (i = 0; i < h2d_irq.size(); i++) {
-		rp_wires_in.wires_in[i](h2d_irq[i]);
+	for (i = 0; i < d2h_irq.size(); i++) {
+		rp_wires_in.wires_in[i](d2h_irq[i]);
 	}
 
-	for (i = 0; i < d2h_irq.size(); i++) {
-		rp_irq_out.wires_out[i](d2h_irq[i]);
+	for (i = 0; i < h2d_irq.size(); i++) {
+		rp_wires_out.wires_out[i](h2d_irq[i]);
 	}
 
 	// Register with Remote-Port.

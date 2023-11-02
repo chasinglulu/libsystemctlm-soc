@@ -88,7 +88,7 @@ void remoteport_tlm_wires::cmd_interrupt_null(remoteport_tlm *adaptor,
 		int64_t clk;
 		size_t plen;
 
-	        clk = adaptor->rp_map_time(adaptor->sync->get_current_time());
+		clk = adaptor->rp_map_time(adaptor->sync->get_current_time());
 		plen = rp_encode_interrupt_f(lpkt.hdr.id,
 					     lpkt.hdr.dev,
 					     &lpkt.interrupt,
@@ -131,7 +131,7 @@ void remoteport_tlm_wires::wire_update(void)
 		uint32_t id = 0;
 
 		wait();
-	        for (i = 0; i < cfg.nr_wires_in; i++) {
+		for (i = 0; i < cfg.nr_wires_in; i++) {
 			events[i] = 0;
 			if (wires_in[i].event()) {
 				events[i] = true;
