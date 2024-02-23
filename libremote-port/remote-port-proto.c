@@ -318,7 +318,7 @@ size_t rp_encode_write_resp(uint32_t id, uint32_t dev,
 size_t rp_encode_busaccess(struct rp_peer_state *peer,
                            struct rp_pkt_busaccess_ext_base *pkt,
                            struct rp_encode_busaccess_in *in) {
-    struct rp_pkt_busaccess *pkt_v4_0 = (void *) pkt;
+    struct rp_pkt_busaccess *pkt_v4_0 = (struct rp_pkt_busaccess *)pkt;
     uint32_t hsize = 0;
     uint32_t ret_size = 0;
 
@@ -484,8 +484,8 @@ void rp_dpkt_alloc(RemotePortDynPkt *dpkt, size_t size)
 {
     if (dpkt->size < size) {
         char *u8;
-        dpkt->pkt = realloc(dpkt->pkt, size);
-        u8 = (void *) dpkt->pkt;
+        dpkt->pkt = (struct rp_pkt *)realloc(dpkt->pkt, size);
+        u8 = (char *) dpkt->pkt;
         memset(u8 + dpkt->size, 0, size - dpkt->size);
         dpkt->size = size;
     }

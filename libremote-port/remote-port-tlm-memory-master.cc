@@ -36,11 +36,9 @@
 #include "tlm_utils/tlm_quantumkeeper.h"
 #include <iostream>
 
-extern "C" {
 #include "safeio.h"
 #include "remote-port-proto.h"
 #include "remote-port-sk.h"
-};
 #include "remote-port-tlm.h"
 #include "remote-port-tlm-memory-master.h"
 #include "tlm-extensions/genattr.h"

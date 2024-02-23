@@ -20,11 +20,9 @@
 using namespace sc_core;
 using namespace std;
 
-extern "C" {
 #include "safeio.h"
 #include "remote-port-proto.h"
 #include "remote-port-sk.h"
-};
 #include "hobot-sigi.h"
 #include "tlm-extensions/genattr.h"
 #include <sys/types.h>

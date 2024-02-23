@@ -52,7 +52,7 @@ rp_safe_read(int fd, void *rbuf, size_t count)
 {
 	ssize_t r;
 	size_t rlen = 0;
-	unsigned char *buf = rbuf;
+	unsigned char *buf = (unsigned char *)rbuf;
 
 	do {
 		if ((r = read(fd, buf + rlen, count - rlen)) < 0) {
@@ -71,7 +71,7 @@ rp_safe_write(int fd, const void *wbuf, size_t count)
 {
 	ssize_t r;
 	size_t wlen = 0;
-	const unsigned char *buf = wbuf;
+	const unsigned char *buf = (const unsigned char *)wbuf;
 
 	do {
 		if ((r = write(fd, buf + wlen, count - wlen)) < 0) {

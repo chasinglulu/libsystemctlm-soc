@@ -26,10 +26,7 @@
 #define REMOTE_PORT_TLM
 
 #include "utils/async_event.h"
-
-extern "C" {
 #include "remote-port-proto.h"
-};
 
 class remoteport_packet {
 public:
